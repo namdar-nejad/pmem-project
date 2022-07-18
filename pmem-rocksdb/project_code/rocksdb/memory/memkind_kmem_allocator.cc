@@ -10,7 +10,14 @@
 #include <stdlib.h>
 
 // max size of the temporary file created by memkind on the PMEM
-#define PMEM_MAX_SIZE (1024 * 1024 * 32)
+
+// this was way to small before
+// it filled up fast when benchmarking with larger amounts of data
+// so I had to make the test data less, and with the smaller test data
+// it didn't even fill up completly to have to do memeory swaps ...
+// this is why it was giving weird results
+//#define PMEM_MAX_SIZE (1024 * 1024 * 32)
+#define PMEM_MAX_SIZE (21474836470)
 
 // absolute path to DAX-enabled directory mounted on top a pmem logical device (/dev/pmem{N})
 // set to the env value of PMEM_PATH
